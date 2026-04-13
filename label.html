@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Label 35x47.5</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      /* Using system fonts to ensure Sinhala and Tamil render well without breaking */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Scaling for screen preview only */
+    .preview-wrapper {
+      transform: scale(4);
+      transform-origin: center;
+      margin: 50px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .label-container {
+      width: 35mm;
+      height: 47.5mm;
+      background-color: white;
+      color: black;
+      padding: 1mm;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* The "Traffic Light" Boxes */
+    .top-boxes {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5mm;
+      height: 20mm;
+      margin-bottom: 0.5mm; /* reduced gap */
+      width: 100%;
+    }
+
+    .t-box {
+      flex: 1;
+      height: 100%;
+      border: 0.5mm solid black;
+      border-radius: 1.5mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 0.8mm;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .box-red {
+      background-color: #e21822; /* Red */
+    }
+
+    .box-green {
+      background-color: #00a651; /* Green */
+    }
+
+    .box-text-container {
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Text with black stroke */
+    .box-text {
+      text-align: center;
+      font-weight: 900;
+      color: white;
+      line-height: 1.1;
+      -webkit-text-stroke: 0.15mm black; /* Thinner stroke to avoid blurriness */
+      position: relative;
+      letter-spacing: 0;
+    }
+
+    .box-text .sinhala {
+      display: block;
+      font-size: 2.3mm;
+      margin-bottom: 0.2mm;
+    }
+
+    .box-text .tamil {
+      display: block;
+      font-size: 2.0mm; /* Smaller to prevent overflow for 'கொழுப்பு' */
+      margin-bottom: 0.2mm;
+    }
+    
+    /* Make fat tamil text slightly smaller to definitely fit */
+    .t-box:nth-child(3) .tamil {
+        font-size: 1.7mm; 
+        margin-top: 0.3mm;
+    }
+
+    .box-text .english {
+      display: block;
+      font-size: 2.4mm;
+      margin-top: 0.1mm;
+    }
+
+    /* The white value box at bottom of color boxes */
+    .box-value-container {
+      background-color: white;
+      width: 92%; /* wider to fit text */
+      height: 4.8mm;
+      border: 0.4mm solid black;
+      border-radius: 1.2mm;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 0.6mm;
+    }
+
+    .box-value {
+      color: black;
+      font-weight: bold;
+      font-size: 1.8mm; /* slightly larger */
+      letter-spacing: -0.1mm;
+    }
+
+    /* Product Details */
+    .candy-title {
+      font-size: 2.1mm; /* reduced so it fits in one line */
+      font-weight: 900;
+      margin-bottom: 0.8mm; /* added some margin */
+      margin-top: 0.5mm;
+      letter-spacing: 0;
+      white-space: nowrap; /* Force one line */
+    }
+
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-weight: bold;
+      font-size: 1.9mm;
+      margin-bottom: 0.5mm;
+    }
+
+    .details-table td {
+      padding: 0;
+      line-height: 1.15;
+      vertical-align: top;
+    }
+
+    .details-table td:first-child {
+      width: 55%; /* Make more room for the right column */
+    }
+
+    .distributor-info {
+      font-size: 1.55mm;
+      line-height: 1.2;
+      margin-bottom: 0.5mm;
+      margin-top: 0.3mm;
+    }
+
+    .flavour {
+      font-size: 1.6mm;
+      font-weight: bold;
+      margin-bottom: 0.4mm;
+      margin-top: 0.4mm;
+      text-transform: uppercase;
+    }
+
+    .instructions {
+      font-size: 1.55mm;
+      line-height: 1.2;
+    }
+
+    @media print {
+      @page {
+        margin: 0;
+        size: 35mm 47.5mm;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        min-height: auto;
+      }
+      .preview-wrapper {
+        transform: none;
+        margin: 0;
+        box-shadow: none;
+      }
+      .label-container {
+        border: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="preview-wrapper">
+    <div class="label-container">
+
+      <div class="top-boxes">
+        <div class="t-box box-red">
+          <div class="box-text-container">
+            <div class="box-text">
+              <span class="sinhala">සීනි</span>
+              <span class="tamil">சீனி</span>
+              <span class="english">Sugar</span>
+            </div>
+          </div>
+          <div class="box-value-container">
+            <span class="box-value">58g/100g</span>
+          </div>
+        </div>
+        <div class="t-box box-green">
+          <div class="box-text-container">
+            <div class="box-text">
+              <span class="sinhala">ලුණු</span>
+              <span class="tamil">உப்பு</span>
+              <span class="english">Salt</span>
+            </div>
+          </div>
+          <div class="box-value-container">
+            <span class="box-value">0g/100g</span>
+          </div>
+        </div>
+        <div class="t-box box-green">
+          <div class="box-text-container">
+            <div class="box-text">
+              <span class="sinhala">මේදය</span>
+              <span class="tamil">கொழுப்பு</span>
+              <span class="english">Fat</span>
+            </div>
+          </div>
+          <div class="box-value-container">
+            <span class="box-value">0g/100g</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="candy-title">CANDY / කැන්ඩි / கண்டி</div>
+
+      <table class="details-table">
+        <tr>
+          <td>M.R.P ./රු.සි.මි.</td>
+          <td>රු/Rs 225/-</td>
+        </tr>
+        <tr>
+          <td>MFD. / නි.දි</td>
+          <td>27 - 10 -2025</td>
+        </tr>
+        <tr>
+          <td>EXP. / ක.ඉ.දි</td>
+          <td>27 - 10 -2027</td>
+        </tr>
+        <tr>
+          <td>Batch No/කා.අ.</td>
+          <td>A10</td>
+        </tr>
+      </table>
+
+      <div class="distributor-info">
+        Imported & Distributed By.<br>
+        Sterling Foods (Pvt) Ltd - 011 2099 337<br>
+        35/3,Colombage Mw.Colombo - 05.
+      </div>
+
+      <div class="flavour">MENTHOLYPTUS FLAVOUR 27.9g</div>
+
+      <div class="instructions">
+        குளிர்ந்த மற்றும் உலர்ந்த இடத்தில்<br>
+        வைக்கவும்./ සිසිල් සහ වියලි ස්ථානයක තබන්න
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
